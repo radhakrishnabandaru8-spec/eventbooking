@@ -27,11 +27,13 @@ function App() {
     JSON.parse(localStorage.getItem("events"))
   );
 }, []);
-  useEffect(() => {
-  localStorage.setItem(
-    "events",
-    JSON.stringify(initialEvents)
-  );
+ useEffect(() => {
+  if (!localStorage.getItem("events")) {
+    localStorage.setItem(
+      "events",
+      JSON.stringify(initialEvents)
+    );
+  }
 }, []);
   return (
     <BrowserRouter>
